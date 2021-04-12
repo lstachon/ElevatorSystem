@@ -9,7 +9,6 @@ public class ElevatorEngineTest {
         ElevatorEngine elevators = new ElevatorEngine();
         elevators.addNewElevator();
         elevators.pickup(0,10);
-        elevators.step();
         elevators.pickup(3,4);
         assertEquals(elevators.elevators.get(0).getTargetFloor(),3);
     }
@@ -30,11 +29,13 @@ public class ElevatorEngineTest {
         ElevatorEngine elevators = new ElevatorEngine();
         elevators.addNewElevator();
         elevators.addNewElevator();
-        elevators.pickup(5,10);
-        elevators.step();
+        elevators.pickup(1,10);
         elevators.step();
         elevators.pickup(3,4);
-        assertEquals(elevators.elevators.get(0).getTargetFloor(),10);
+        elevators.step();
+        elevators.pickup(6,7);
+        elevators.printElevatorStatuses();
+        assertEquals(elevators.elevators.get(1).getTargetFloor(),6);
     }
 
     @Test

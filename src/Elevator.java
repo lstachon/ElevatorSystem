@@ -5,11 +5,12 @@ public class Elevator {
 
     final ElevatorValues values = new ElevatorValues();
 
-    final Queue<Integer> pickUpOrder = new LinkedList<Integer>();
+    final LinkedList<Integer> pickUpOrder = new LinkedList<Integer>();
 
     public Elevator(int elevatorID, int currentFloor) {
         this.values.elevatorID = elevatorID;
         this.values.currentFloor = currentFloor;
+        this.values.targetFloor = Integer.MAX_VALUE;
     }
 
     public int getCurrentFloor() {
@@ -33,14 +34,15 @@ public class Elevator {
     }
 
     public void addtarget(int targetFloor) {
-        this.pickUpOrder.add(targetFloor);
+        this.pickUpOrder.addLast(targetFloor);
     }
 
     public void step() {
-        this.values.currentFloor = this.values.targetFloor;
+        if(this.values.targetFloor != Integer.MAX_VALUE) {
+            this.values.currentFloor = this.values.targetFloor;
+        }
         if (!this.pickUpOrder.isEmpty()) {
-            this.values.targetFloor = this.pickUpOrder.remove();
-
+            this.values.targetFloor = this.pickUpOrder.removeFirst();
         }
     }
 

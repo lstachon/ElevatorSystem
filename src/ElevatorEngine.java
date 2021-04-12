@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.LinkedList;
 
 import static java.lang.Math.abs;
 
@@ -11,9 +12,97 @@ public class ElevatorEngine implements IElevatorSystem {
     public void pickup(int from, int to) {
         if (findClosestElevator(from) != -1) {
 
-            update(findClosestElevator(from), elevators.get(findClosestElevator(from)).getCurrentFloor(), from);
-            elevators.get(findClosestElevator(from)).pickUpOrder.remove(from);
-            elevators.get(findClosestElevator(from)).addtarget(to);
+        boolean flag = true;
+
+        if(to<from){
+            boolean flag2 = true;
+            int elevidnex= -1;
+            for (Elevator elevator : elevators) {
+                if(elevator.getCurrentFloor()>=from && elevator.getTargetFloor()<=to){
+                    elevidnex = elevator.getElevatorID();
+                    flag = false;
+                }
+                else if(elevator.getCurrentFloor()>=from && elevator.getTargetFloor()>to){
+                    elevidnex = elevator.getElevatorID();
+                    flag2 = false;
+                }
+            }
+            if(!flag) {
+                if(elevators.get(elevidnex).getTargetFloor()!= Integer.MAX_VALUE) {
+                    int elevatorPrevTarget = elevators.get(elevidnex).getTargetFloor();
+                    elevators.get(elevidnex).pickUpOrder.addFirst(elevatorPrevTarget);
+
+                }
+
+                if(elevators.get(elevidnex).getTargetFloor() < to && elevators.get(elevidnex).getTargetFloor()!= Integer.MAX_VALUE){
+                    update(elevidnex, elevators.get(elevidnex).getCurrentFloor(), from);
+                    elevators.get(elevidnex).pickUpOrder.addFirst(to);
+                }
+                else {
+                    update(elevidnex, elevators.get(elevidnex).getCurrentFloor(), from);
+                    elevators.get(elevidnex).addtarget(to);
+                }
+            }
+            else if(!flag2){
+                if(elevators.get(elevidnex).getTargetFloor()!= Integer.MAX_VALUE) {
+                    int elevatorPrevTarget = elevators.get(elevidnex).getTargetFloor();
+                    elevators.get(elevidnex).pickUpOrder.addFirst(elevatorPrevTarget);
+                }
+                update(elevidnex, elevators.get(elevidnex).getCurrentFloor(), from);
+                elevators.get(elevidnex).addtarget(to);
+            }
+
+        }
+        else if(to>from){
+            boolean flag2 = true;
+                int elevidnex= -1;
+                for (Elevator elevator : elevators) {
+                    if(elevator.getCurrentFloor()<=from && elevator.getTargetFloor()>=to){
+                        elevidnex = elevator.getElevatorID();
+                        flag = false;
+                    }
+                    else if(elevator.getCurrentFloor()<=from && elevator.getTargetFloor()<to){
+                        elevidnex = elevator.getElevatorID();
+                        flag2 = false;
+                    }
+                }
+                if(!flag) {
+                    if(elevators.get(elevidnex).getTargetFloor()!= Integer.MAX_VALUE) {
+                        int elevatorPrevTarget = elevators.get(elevidnex).getTargetFloor();
+                        elevators.get(elevidnex).pickUpOrder.addFirst(elevatorPrevTarget);
+                    }
+
+                    if(elevators.get(elevidnex).getTargetFloor() > to && elevators.get(elevidnex).getTargetFloor()!= Integer.MAX_VALUE){
+                        update(elevidnex, elevators.get(elevidnex).getCurrentFloor(), from);
+                        elevators.get(elevidnex).pickUpOrder.addFirst(to);
+                    }
+                    else {
+                        update(elevidnex, elevators.get(elevidnex).getCurrentFloor(), from);
+                        elevators.get(elevidnex).addtarget(to);
+                    }
+                }
+                else if(!flag2){
+                    if(elevators.get(elevidnex).getTargetFloor()!= Integer.MAX_VALUE) {
+                        int elevatorPrevTarget = elevators.get(elevidnex).getTargetFloor();
+                        elevators.get(elevidnex).pickUpOrder.addFirst(elevatorPrevTarget);
+                    }
+                    update(elevidnex, elevators.get(elevidnex).getCurrentFloor(), from);
+                    elevators.get(elevidnex).addtarget(to);
+                }
+            }
+
+        if(flag){
+            if(elevators.get(findClosestElevator(from)).getTargetFloor()== Integer.MAX_VALUE){
+                update(elevators.get(findClosestElevator(from)).getElevatorID(),elevators.get(findClosestElevator(from)).getCurrentFloor(),from);
+                if(from == 0){
+                    update(elevators.get(findClosestElevator(from)).getElevatorID(),elevators.get(findClosestElevator(from)).getCurrentFloor(),to);
+                }
+            }
+            else {
+                elevators.get(findClosestElevator(from)).addtarget(from);
+                elevators.get(findClosestElevator(from)).addtarget(to);
+            }
+        }
 
         } else {
             System.out.println("no elevators added");
