@@ -9,7 +9,7 @@ public class main {
 
         IElevatorSystem elevators = new ElevatorEngine();
 
-        System.out.println("To exit write q");
+        System.out.println("q - exit");
         System.out.println("Actions:");
         System.out.println("add - adds new elevator (max 16)");
         System.out.println("pickup - call an elevator");
@@ -19,7 +19,7 @@ public class main {
         System.out.println("help - writes the possible actions");
 
         boolean flag = true;
-        while(flag){
+        while (flag) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String str = reader.readLine();
 
@@ -64,7 +64,7 @@ public class main {
                     break;
                 }
                 case "help":
-                    System.out.println("To exit write q");
+                    System.out.println("q - exit");
                     System.out.println("Actions:");
                     System.out.println("add - adds new elevator (max 16)");
                     System.out.println("pickup - call an elevator");
@@ -75,8 +75,7 @@ public class main {
                     break;
                 default:
                     System.out.println("no command matching, write a command from one of the followings:");
-                    System.out.println("To exit write q");
-                    System.out.println("Actions:");
+                    System.out.println("q - exit");
                     System.out.println("add - adds new elevator (max 16)");
                     System.out.println("pickup - call an elevator");
                     System.out.println("step - moves elevators");
