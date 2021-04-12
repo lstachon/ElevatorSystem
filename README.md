@@ -2,14 +2,14 @@
 ### 
 System obsługi wind może działać na dwa sposoby: 
 każda winda działa niezależnie i człowiek decyduje którą windę przywołuje (osoba podaje która windą chce pojechac) 
-system przydziela windę człowiekowi (osoba tylko podaje piętro na które chce pojechac).
+system przydziela windę człowiekowi (osoba tylko podaje piętro na które chce pojechać).
 
-Pierwsze podejście ma bardzo duże wadę, windy nie są równomiernie użytkowane. Moze zdarzyc sie tak ze kazdy bedzie przywoływać tą samą windę, co byłoby bardzo nieoptymalne oraz wydłuża czas transportu ludzi.
+Pierwsze podejście ma bardzo duże wadę, windy nie są równomiernie użytkowane. Moze zdarzyć się tak ze każdy bedzie przywoływać tą samą windę, co byłoby bardzo nieoptymalne oraz wydłuża czas transportu ludzi.
 
 ### Algorytm
 
 
-Winda jedzie w gore i zbiera osoby po drodze i je dowozi (zbiera tylko osoby co jadą w gore) i zatrzymuje sie na pietrze gdzie wysadziła ostatnia osobę.
+Winda jedzie w góre zbiera osoby po drodze i je dowozi (zbiera tylko osoby co jadą w gore) i zatrzymuje sie na pietrze gdzie wysadziła ostatnia osobę.
 Usprawnienie: Winda zatrzyma się maksymalnie x razy zanim dowiezie osobę do celu (żeby osoby nie spędziły w windzie zbyt dużo czasu). 
 Rozszerzenie - dodanie maksymalnej pojemności windy (np. W windzie może maksymalnie przebywać 10 osób naraz).
 
@@ -30,7 +30,7 @@ Obsługa programu odbywa się z wiersza poleceń.
 Każdą komendę należy kończyć enterem.
 By zakończyć program wpisujemy "q".
 
--Nalezy zacząć od dodania odpowiedniej ilości wind kazde polecenie add dodaje jedną. Nowo dodane windy mają ustawione jako aktualne piętro: 0.
+-Należy zacząć od dodania odpowiedniej ilości wind kazde polecenie add dodaje jedną. Nowo dodane windy mają ustawione jako aktualne piętro: 0.
 
 -Poleceniem pickup przywołujemy windę która jedzie w danym kierunku (np. ktos wywołuje komende pickup z 1 piętra na 10 a w tym samym czasie (bez komendy step) ktoś wywoła pick up z 3 piętra na 4 to winda podjedzie w kolejności 1-3-4-10) analogicznie gdy winda jedzie w dół.
 
