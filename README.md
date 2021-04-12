@@ -32,11 +32,9 @@ By zakończyć program wpisujemy "q".
 
 -Należy zacząć od dodania odpowiedniej ilości wind kazde polecenie add dodaje jedną. Nowo dodane windy mają ustawione jako aktualne piętro: 0.
 
--Poleceniem pickup przywołujemy windę która jedzie w danym kierunku (np. ktos wywołuje komende pickup z 1 piętra na 10 a w tym samym czasie (bez komendy step) ktoś wywoła pick up z 3 piętra na 4 to winda podjedzie w kolejności 1-3-4-10) analogicznie gdy winda jedzie w dół.
+-Poleceniem pickup przywołujemy windę która jedzie w danym kierunku (np. winda ma jechać z 1 piętra na piętro 10 ale w międzyczasie ktoś wywołuje komendę pickup z piętra 3 na 4 to winda podjedzie w kolejności 1-3-4-10) analogicznie gdy winda jedzie w dół.
 
 -Jeśli nie ma windy która mogłaby nas "podrzucić" to wybierana jest winda która jest najbliżej piętra z którego ją przywołujemy.
-
--Po przybyciu na miejsce nowym celem windy jest piętro które zostało wybrane najdawniej.
 
 -Jeżeli winda nie ruszyła się w danym ruchu to jej cel i aktualne piętro są takie same.
 
